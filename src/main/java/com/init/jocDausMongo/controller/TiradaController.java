@@ -1,4 +1,4 @@
-package com.init.jocDaus.controller;
+package com.init.jocDausMongo.controller;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -18,11 +18,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.init.jocDaus.dto.Player;
-import com.init.jocDaus.dto.Tirada;
-import com.init.jocDaus.service.PlayerServiceImpl;
-import com.init.jocDaus.service.TiradaServiceImpl;
-//import com.init.jocDaus.service.PlayerServiceImpl;
+import com.init.jocDausMongo.dto.Player;
+import com.init.jocDausMongo.dto.Tirada;
+import com.init.jocDausMongo.service.PlayerServiceImpl;
+import com.init.jocDausMongo.service.TiradaServiceImpl;
 
 import javax.persistence.EntityManager;
 

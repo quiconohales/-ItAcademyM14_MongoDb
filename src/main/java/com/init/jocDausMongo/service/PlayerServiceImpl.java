@@ -1,4 +1,4 @@
-package com.init.jocDaus.service;
+package com.init.jocDausMongo.service;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,9 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-
-import com.init.jocDaus.dao.IPlayerDAO;
-import com.init.jocDaus.dto.Player;
+import com.init.jocDausMongo.dao.IPlayerDAO;
+import com.init.jocDausMongo.dto.Player;
 
 
 @Service

@@ -1,4 +1,4 @@
-package com.init.jocDaus.dto;
+package com.init.jocDausMongo.dto;
 
 import java.util.Date;
 import java.util.Iterator;

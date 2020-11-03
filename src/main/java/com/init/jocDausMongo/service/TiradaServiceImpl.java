@@ -1,4 +1,4 @@
-package com.init.jocDaus.service;
+package com.init.jocDausMongo.service;
 
  
 import java.util.List;
@@ -6,9 +6,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.init.jocDaus.dao.ITiradaDAO;
-import com.init.jocDaus.dto.Tirada;
-import com.init.jocDaus.dto.Player;
+import com.init.jocDausMongo.dao.ITiradaDAO;
+import com.init.jocDausMongo.dto.Player;
+import com.init.jocDausMongo.dto.Tirada;
 
 @Service
 public class TiradaServiceImpl implements ITiradaService {

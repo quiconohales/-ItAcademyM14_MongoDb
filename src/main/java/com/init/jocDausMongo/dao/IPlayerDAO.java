@@ -1,8 +1,8 @@
-package com.init.jocDaus.dao;
+package com.init.jocDausMongo.dao;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.init.jocDaus.dto.Player;
+import com.init.jocDausMongo.dto.Player;
 
 
 
