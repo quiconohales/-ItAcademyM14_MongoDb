@@ -25,29 +25,29 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 * @author: Francesc Nohales
 * @version: 1.0
 */
-@Entity
-@Table(name="tirada")
+//@Entity
+//@Table(name="tirada")
 
 public class Tirada {
 	
-	@Id
-	@Column(name="id")
-	@GeneratedValue(strategy = GenerationType.IDENTITY) 
-	private Integer id;
+	//@Id
+	//@Column(name="id")
+	//@GeneratedValue(strategy = GenerationType.IDENTITY) 
+	//private Integer id;
 
-	@Column(name="dau1")
+	//@Column(name="dau1")
 	private Integer dau1;
 	
-	@Column(name="dau2")
+	//@Column(name="dau2")
 	private Integer dau2;
 	
-	@Column(name="win")
+	//@Column(name="win")
 	private boolean win;
 	
 		
-	@ManyToOne
-	@JoinColumn(name = "fk_player")
-	@JsonIgnore
+//	@ManyToOne
+//	@JoinColumn(name = "fk_player")
+//	@JsonIgnore
 	private Player player;
 	
 
@@ -72,9 +72,9 @@ public class Tirada {
 	}
 		
 	
-	public Tirada(Integer id, Integer dau1, Integer dau2, boolean win,Player player) {
+	public Tirada( Integer dau1, Integer dau2, boolean win,Player player) {
 		super();
-		this.id = id;
+	//	this.id = id;
 		this.dau1 = dau1;
 		this.dau2 = dau2;
 		this.win = win;
@@ -92,9 +92,9 @@ public class Tirada {
 	 */
 
 	// Getters & setters 
-	public Integer getId() {
-		return id;
-	}
+//	public Integer getId() {
+//		return id;
+//	}
 	public Integer getDau1() {
 		return dau1;
 	}
@@ -126,7 +126,7 @@ public class Tirada {
 
 	@Override
 	public String toString() {
-		return "Dice Roll [id = " + id + ", dau1 = " + dau1 + ", dau 2 = " + dau2 + ",  win =" + win + ", player = " + player
+		return "Dice Roll [ dau1 = " + dau1 + ", dau 2 = " + dau2 + ",  win =" + win + ", player = " + player
 				+ " ]";
 	}
 

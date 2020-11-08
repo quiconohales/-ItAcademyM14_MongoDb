@@ -5,7 +5,7 @@ import java.util.Collections;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.Query;
+//import org.springframework.data.jpa.repository.Query;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -49,7 +49,7 @@ public class TiradaController {
 			Tirada_player1.setPlayer(player1);
 			return new ResponseEntity<>(tiradaServiceImpl.saveTirada(Tirada_player1), HttpStatus.ACCEPTED);
 		} catch (Exception e) {
-			System.out.println("THIS PLAYER NOT EXIST");
+			System.out.println("THIS PLAYER NOT EXIST "+ e);
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 
 		}

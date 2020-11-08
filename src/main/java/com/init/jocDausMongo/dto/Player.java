@@ -21,30 +21,30 @@ import javax.persistence.OneToMany;
 * @author: Francesc Nohales
 * @version: 1.0
 */
-@Entity
-@Table(name="player")
+//@Entity
+//@Table(name="player")
 
 public class Player {
 	
 
 	@Id
-	@Column(name="id")
-	@GeneratedValue(strategy = GenerationType.IDENTITY) 
+	//@Column(name="id")
+	//@GeneratedValue(strategy = GenerationType.IDENTITY) 
 	private Integer id;
 
-	@Column(name="name")
+	//@Column(name="name")
 	private String name;
 	
-	@Column(name="success")
+	//@Column(name="success")
 	private Double success;
 	
-	@Column(name = "registDate", updatable = false, nullable = false)
-    @Temporal(TemporalType.DATE)
+	//@Column(name = "registDate", updatable = false, nullable = false)
+    //@Temporal(TemporalType.DATE)
     private Date registDate;
 	
 	// Entities relationship
-	@OneToMany(mappedBy="player")
-	@JsonIgnore 
+	//@OneToMany(mappedBy="player")
+	//@JsonIgnore 
 	private List<Tirada> tirada;
 
 	/**
@@ -80,12 +80,13 @@ public class Player {
 	}
 
 
-	public Player(Integer id, String name, Double success, Date registDate, List<Tirada> tirada) {
+	public Player(Integer id, String name, Double success, Date registDate,List<Tirada> tirada) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.success = success;
 		this.registDate = registDate;
+		this.tirada= tirada;
 	
 	}
 

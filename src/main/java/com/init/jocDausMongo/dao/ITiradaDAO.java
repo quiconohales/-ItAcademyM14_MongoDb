@@ -2,12 +2,13 @@ package com.init.jocDausMongo.dao;
 
 
 
-import org.springframework.data.jpa.repository.JpaRepository;
+
+import org.springframework.data.mongodb.repository.MongoRepository;
 
 import com.init.jocDausMongo.dto.Tirada;
 
 
-public interface ITiradaDAO extends JpaRepository <Tirada,Integer>{
+public interface ITiradaDAO extends MongoRepository <Tirada,Integer>{
 
 	
 
