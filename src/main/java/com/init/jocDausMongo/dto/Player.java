@@ -52,7 +52,7 @@ public class Player implements Serializable {
 		//this.id = id;
 		this.name = name;
 		this.success = success;
-		this.registDate = registDate;
+		this.registDate = new Date();
 		this.tirada= tirada;
 	
 	}

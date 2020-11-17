@@ -1,5 +1,6 @@
 package com.init.jocDausMongo.controller;
-import java.util.ArrayList;
+
+
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -23,52 +24,47 @@ public class PlayerController {
 	@Autowired
 	PlayerServiceImpl playerServiceImpl;
 	@Autowired
-    private SecuenciadorService secuenciadorService;
-	
-	
-	/** 1 - Postman
-     * Método que crea una Player
-     * @return nada
-     * (POST /Player).
-     */
-	@PostMapping ("/players")
+	private SecuenciadorService secuenciadorService;
+
+	/**
+	 * 1 - Postman Método que crea una Player
+	 * 
+	 * @return nada (POST /Player).
+	 */
+	@PostMapping("/players")
 	public String savePlayer(@RequestBody Player player) {
 		String name_select;
-		boolean duplicat=false;
+		boolean duplicat = false;
 		name_select = player.getName();
-		for (Player player1:playerServiceImpl.listPlayer())  {
+		for (Player player1 : playerServiceImpl.listPlayer()) {
 			if (player1.getName().equals(name_select)) {
-				duplicat=true;
+				duplicat = true;
 			}
 		}
 		if (duplicat) {
 			return "Jugador Duplicat";
-			}else {
+		} else {
 			player.setId(secuenciadorService.generarSecuenciaPlayer(player.SEQUENCE_NAME));
 			playerServiceImpl.savePlayer(player);
 			return "Jugador creat correctament";
+		}
 	}
-	}
-	/** 2 - Postman
-     * Método que actualiza un Player 
-     * @return nada
-     * (PUT /Player).
-     */
+
+	/**
+	 * 2 - Postman Método que actualiza un Player
+	 * 
+	 * @return nada (PUT /Player).
+	 */
 	@PutMapping("/players/{id}")
 	public ResponseEntity<Player> updatePlayer(@PathVariable(name = "id") Long id, @RequestBody Player player) {
 
 		Player player_select = new Player();
 		player_select = playerServiceImpl.playerXID(id);
 		player_select.setName(player.getName());
-	
-	return new ResponseEntity<>(playerServiceImpl.updatePlayer(player_select),HttpStatus.OK);
+
+		return new ResponseEntity<>(playerServiceImpl.updatePlayer(player_select), HttpStatus.OK);
 	}
 
-	// Get Leer
-	// Post Enviar/crear
-	// Put actualizar y tambien crear
-	// delette borrar
-	
 	// lista tiradas de un jugador
 	@GetMapping("/players/{id}/games")
 	public List<Tirada> getListTirada(@PathVariable(name = "id") Long id) {
@@ -76,16 +72,14 @@ public class PlayerController {
 		return player.getTirada();
 	}
 
-	
 	/**
-     * Método que lista los jugadores  existentes
-     * @return Lista de jugadores
-     * (GET /shops/{ID}/pictures).
-     */
+	 * Método que lista los jugadores existentes
+	 * 
+	 * @return Lista de jugadores (GET /shops/{ID}/pictures).
+	 */
 	@GetMapping("/get")
 	public ResponseEntity<List<Player>> listPlayer() {
 		return ResponseEntity.ok(playerServiceImpl.listPlayer());
 	}
-
 
 }

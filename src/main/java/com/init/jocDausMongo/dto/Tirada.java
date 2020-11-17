@@ -32,12 +32,12 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 public class Tirada {
 	
 	@Id
-	private Long idTirada;
+	private Long id;
 	private Integer dau1;
 	private Integer dau2;
 	private boolean win;
     @Transient
-    public static final String SEQUENCE_NAME = "play_sequence";
+    public static final String SEQUENCE_NAME = "tirada_sequence";
 	@JsonIgnore
 	private Player player;
 	
@@ -90,13 +90,13 @@ public class Tirada {
 	public Integer getDau1() {
 		return dau1;
 	}
-	public Long getIdTirada() {
-		return idTirada;
+	public Long getId() {
+		return id;
 	}
 
 
-	public void setIdTirada(Long idTirada) {
-		this.idTirada = idTirada;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 

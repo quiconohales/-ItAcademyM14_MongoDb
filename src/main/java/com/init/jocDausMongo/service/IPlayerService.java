@@ -1,17 +1,15 @@
 package com.init.jocDausMongo.service;
 
-import java.util.ArrayList;
+
 import java.util.List;
 
 import com.init.jocDausMongo.dto.Player;
 
-
-
 public interface IPlayerService {
-	
-	public Player savePlayer(Player player); // Guarda una  tienda
-	
-	public List<Player> listPlayer();// Lista todos las tiendas
+
+	public Player savePlayer(Player player);
+
+	public List<Player> listPlayer();
 
 	public Player updatePlayer(Player player);
 
@@ -19,11 +17,4 @@ public interface IPlayerService {
 
 	public Player getPlayer(Long id);
 
-
-
-
-
-
-
 }
-
