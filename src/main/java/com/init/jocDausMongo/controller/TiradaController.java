@@ -1,7 +1,7 @@
 package com.init.jocDausMongo.controller;
 
 import java.util.ArrayList;
-import java.util.Collections;
+import java.util.Collections; 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.init.jocDausMongo.dto.Player;
 import com.init.jocDausMongo.dto.Tirada;
 import com.init.jocDausMongo.service.PlayerServiceImpl;
+import com.init.jocDausMongo.service.SecuenciadorService;
 import com.init.jocDausMongo.service.TiradaServiceImpl;
 
 import javax.persistence.EntityManager;
@@ -34,6 +35,8 @@ public class TiradaController {
 	///////////////////////////////////////////////////// y ee aaa
 	@Autowired
 	PlayerServiceImpl playerServiceImpl;
+	@Autowired
+    private SecuenciadorService secuenciadorService;
 
 	/**
 	 * 3 - Postman Método que agrega un tirada introducido en la petición, en caso
@@ -42,11 +45,12 @@ public class TiradaController {
 	 * @return Tirada (POST/post/shops/{shopid})
 	 */
 	@PostMapping("/post/player/{playerid}/games") // {player_id}
-	public ResponseEntity<Tirada> saveTirada(@PathVariable(value = "playerid") Integer playerid) {
+	public ResponseEntity<Tirada> saveTirada(@PathVariable(value = "playerid") Long playerid) {
 		try {
 			Player player1 = playerServiceImpl.getPlayer(playerid);
 			Tirada Tirada_player1 = new Tirada();
 			Tirada_player1.setPlayer(player1);
+			Tirada_player1.setIdTirada(secuenciadorService.generarSecuenciaTirada(Tirada_player1.SEQUENCE_NAME));
 			return new ResponseEntity<>(tiradaServiceImpl.saveTirada(Tirada_player1), HttpStatus.ACCEPTED);
 		} catch (Exception e) {
 			System.out.println("THIS PLAYER NOT EXIST "+ e);

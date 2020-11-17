@@ -6,6 +6,6 @@ import com.init.jocDausMongo.dto.Player;
 
 
 
-public interface IPlayerDAO extends MongoRepository <Player,Integer>{
+public interface IPlayerDAO extends MongoRepository <Player,Long>{
 
 }

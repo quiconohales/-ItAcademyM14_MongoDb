@@ -15,12 +15,17 @@ import org.springframework.web.bind.annotation.RestController;
 import com.init.jocDausMongo.dto.Player;
 import com.init.jocDausMongo.dto.Tirada;
 import com.init.jocDausMongo.service.PlayerServiceImpl;
+import com.init.jocDausMongo.service.SecuenciadorService;
 
 @RestController
 @RequestMapping("/player")
 public class PlayerController {
 	@Autowired
 	PlayerServiceImpl playerServiceImpl;
+	@Autowired
+    private SecuenciadorService secuenciadorService;
+	
+	
 	/** 1 - Postman
      * Método que crea una Player
      * @return nada
@@ -39,6 +44,7 @@ public class PlayerController {
 		if (duplicat) {
 			return "Jugador Duplicat";
 			}else {
+			player.setId(secuenciadorService.generarSecuenciaPlayer(player.SEQUENCE_NAME));
 			playerServiceImpl.savePlayer(player);
 			return "Jugador creat correctament";
 	}
@@ -49,7 +55,7 @@ public class PlayerController {
      * (PUT /Player).
      */
 	@PutMapping("/players/{id}")
-	public ResponseEntity<Player> updatePlayer(@PathVariable(name = "id") Integer id, @RequestBody Player player) {
+	public ResponseEntity<Player> updatePlayer(@PathVariable(name = "id") Long id, @RequestBody Player player) {
 
 		Player player_select = new Player();
 		player_select = playerServiceImpl.playerXID(id);
@@ -65,7 +71,7 @@ public class PlayerController {
 	
 	// lista tiradas de un jugador
 	@GetMapping("/players/{id}/games")
-	public List<Tirada> getListTirada(@PathVariable(name = "id") Integer id) {
+	public List<Tirada> getListTirada(@PathVariable(name = "id") Long id) {
 		Player player = playerServiceImpl.getPlayer(id);
 		return player.getTirada();
 	}

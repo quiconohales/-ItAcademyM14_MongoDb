@@ -1,4 +1,5 @@
 package com.init.jocDausMongo.dto;
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
@@ -11,11 +12,12 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.springframework.data.annotation.PersistenceConstructor;
+import org.springframework.data.annotation.Transient;
+import org.springframework.data.mongodb.core.index.Indexed;
+import org.springframework.data.mongodb.core.mapping.Document;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
-
-import javax.persistence.OneToMany;
-
-
 /**
 * Esta clase define el objeto Player
 * @author: Francesc Nohales
@@ -23,28 +25,20 @@ import javax.persistence.OneToMany;
 */
 //@Entity
 //@Table(name="player")
+@Document(collection="player")
+public class Player implements Serializable {
 
-public class Player {
 	
-
-	@Id
-	//@Column(name="id")
-	//@GeneratedValue(strategy = GenerationType.IDENTITY) 
-	private Integer id;
-
-	//@Column(name="name")
+    @Id
+	private long  id;
+	
+	@Indexed(unique = true)
 	private String name;
-	
-	//@Column(name="success")
 	private Double success;
-	
-	//@Column(name = "registDate", updatable = false, nullable = false)
-    //@Temporal(TemporalType.DATE)
     private Date registDate;
-	
-	// Entities relationship
-	//@OneToMany(mappedBy="player")
-	//@JsonIgnore 
+    @Transient
+    public static final String SEQUENCE_NAME = "players_sequence"; 
+	@JsonIgnore 
 	private List<Tirada> tirada;
 
 	/**
@@ -53,19 +47,27 @@ public class Player {
 	 * @param name
 	 * */
 	
-
+	public Player(String name, Double success, Date registDate,List<Tirada> tirada) {
+		//super();
+		//this.id = id;
+		this.name = name;
+		this.success = success;
+		this.registDate = registDate;
+		this.tirada= tirada;
 	
+	}
+
 	public Player() {
 	}
 
 
 	// Getters & Setters
-	public Integer getId() {
+	public long  getId() {
 		return id;
 	}
 
 
-	public void setId(Integer id) {
+	public void setId(long  id) {
 		this.id = id;
 	}
 
@@ -79,16 +81,6 @@ public class Player {
 		this.name = name;
 	}
 
-
-	public Player(Integer id, String name, Double success, Date registDate,List<Tirada> tirada) {
-		super();
-		this.id = id;
-		this.name = name;
-		this.success = success;
-		this.registDate = registDate;
-		this.tirada= tirada;
-	
-	}
 
 
 	public Double getSuccess() {

@@ -15,9 +15,13 @@ public interface IPlayerService {
 
 	public Player updatePlayer(Player player);
 
-	public Player playerXID(Integer id);
+	public Player playerXID(Long id);
 
-	public Player getPlayer(Integer id);
+	public Player getPlayer(Long id);
+
+
+
+
 
 
 

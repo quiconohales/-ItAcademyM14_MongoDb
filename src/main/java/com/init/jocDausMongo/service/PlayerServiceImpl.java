@@ -32,14 +32,14 @@ public class PlayerServiceImpl implements IPlayerService {
 	}
 	
 	@Override
-	public Player playerXID(Integer id) {
+	public Player playerXID(Long id) {
 		return iplayerDAO.findById(id).get();
 	}
 	
 	// Get player by id
 
 	@Override
-	public Player getPlayer(Integer id) {
+	public Player getPlayer(Long id) {
 		return iplayerDAO.findById(id).get();
 	}
 

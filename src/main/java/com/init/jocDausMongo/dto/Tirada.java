@@ -18,6 +18,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.springframework.data.annotation.Transient;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 /**
@@ -25,29 +27,18 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 * @author: Francesc Nohales
 * @version: 1.0
 */
-//@Entity
-//@Table(name="tirada")
 
+@Document(collection="tirada")
 public class Tirada {
 	
-	//@Id
-	//@Column(name="id")
-	//@GeneratedValue(strategy = GenerationType.IDENTITY) 
-	//private Integer id;
-
-	//@Column(name="dau1")
+	@Id
+	private Long idTirada;
 	private Integer dau1;
-	
-	//@Column(name="dau2")
 	private Integer dau2;
-	
-	//@Column(name="win")
 	private boolean win;
-	
-		
-//	@ManyToOne
-//	@JoinColumn(name = "fk_player")
-//	@JsonIgnore
+    @Transient
+    public static final String SEQUENCE_NAME = "play_sequence";
+	@JsonIgnore
 	private Player player;
 	
 
@@ -74,7 +65,7 @@ public class Tirada {
 	
 	public Tirada( Integer dau1, Integer dau2, boolean win,Player player) {
 		super();
-	//	this.id = id;
+		//this.id = id;
 		this.dau1 = dau1;
 		this.dau2 = dau2;
 		this.win = win;
@@ -95,9 +86,20 @@ public class Tirada {
 //	public Integer getId() {
 //		return id;
 //	}
+	
 	public Integer getDau1() {
 		return dau1;
 	}
+	public Long getIdTirada() {
+		return idTirada;
+	}
+
+
+	public void setIdTirada(Long idTirada) {
+		this.idTirada = idTirada;
+	}
+
+
 	public void setDau1(Integer dau1) {
 		this.dau1 = dau1;
 	}
@@ -130,6 +132,7 @@ public class Tirada {
 				+ " ]";
 	}
 
-	
+
+
 
 }
