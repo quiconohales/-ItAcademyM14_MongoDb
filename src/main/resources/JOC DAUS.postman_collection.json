@@ -107,7 +107,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n        \"name\": \"Lourdes\"\r\n      \r\n}",
+					"raw": "{\r\n     \r\n      \r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -241,7 +241,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n        \"name\": \"Lourdes\"\r\n      \r\n}",
+					"raw": "{\r\n      \r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -332,7 +332,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n        \"name\": \"Lourdes\"\r\n      \r\n}",
+					"raw": "{\r\n       \r\n      \r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
